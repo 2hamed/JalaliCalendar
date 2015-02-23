@@ -134,6 +134,18 @@ public class JalaliCalendar extends Calendar {
                           int minute, int second) {
         this(year, month, dayOfMonth, hourOfDay, minute, second, 0);
     }
+	
+	public JalaliCalendar(long unixTime) {
+        Date date = new Date(unixTime * 1000L);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        set(calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH),
+                calendar.get(Calendar.HOUR),
+                calendar.get(Calendar.MINUTE),
+                calendar.get(Calendar.SECOND));
+    }
 
     JalaliCalendar(int year, int month, int dayOfMonth,
                    int hourOfDay, int minute, int second, int millis) {
